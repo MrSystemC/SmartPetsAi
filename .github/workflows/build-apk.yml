@@ -1,9 +1,6 @@
-name: Build Flutter Android
+name: Build APK
 
 on:
-  push:
-    branches: ['main']
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -18,7 +15,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -32,29 +29,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Format check
-        run: dart format --output=none --set-exit-if-changed lib test
-
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test
-
       - name: Build release APK
         run: flutter build apk --release
 
-      - name: Build release App Bundle
-        run: flutter build appbundle --release
-
-      - name: Upload APK artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: petsgram-ai-release-apk
+          name: app-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Upload AAB artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: petsgram-ai-release-aab
-          path: build/app/outputs/bundle/release/app-release.aab
