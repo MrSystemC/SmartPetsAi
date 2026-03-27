@@ -1,0 +1,27 @@
+name: petsgram_ai_app_v3_ready
+description: Petsgram AI Android app with Dio, Riverpod, GoRouter and a production-style architecture.
+publish_to: "none"
+version: 4.0.0+4
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.6.1
+  dio: ^5.9.0
+  go_router: ^14.8.1
+  flutter_secure_storage: ^9.2.4
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.jpg
